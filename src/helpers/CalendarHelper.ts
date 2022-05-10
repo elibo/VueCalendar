@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export const getYearCalendar = (month: number, year: number) => {
+export const getMonthCalendar = (month: number, year: number) => {
     const calendar = [];
     const today = moment();
     if (year) {

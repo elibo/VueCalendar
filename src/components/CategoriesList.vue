@@ -1,14 +1,15 @@
 <script setup lang="ts">
-const props = defineProps<{
-  list: Array<string>;
-}>();
+import { useCategoryStore } from "@/stores/Category";
+
+const store = useCategoryStore();
 </script>
 
 <template>
-  <div v-for="cat in props.list" :key="{ cat }">
+  <div v-for="cat in store.categories" :key="{ cat }">
     <p>{{ cat }}</p>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+
 </style>

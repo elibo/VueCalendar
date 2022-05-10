@@ -1,28 +1,20 @@
 <script setup lang="ts">
-const props = defineProps({
-  actualYear: Number,
-});
+import { useCalendarStore } from "@/stores/Calendar";
 
-const emits = defineEmits(["change"]);
+const store = useCalendarStore()
 
-const previousYear = () => {
-  emits("change", -1);
-};
-
-const nextYear = () => {
-  emits("change", +1);
-};
 </script>
 
 <template>
   <div class="navigator-wrapper">
-    <button class="prev-button" @click="previousYear">anterior</button>
-    {{ props.actualYear }}
-    <button class="next-button" @click="nextYear">siguiente</button>
+    <button class="prev-button" @click="store.decrement()">anterior</button>
+    {{ store.year }}
+    <button class="next-button" @click="store.increment()">siguiente</button>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+
 .navigator-wrapper {
   width: 100%;
   display: flex;

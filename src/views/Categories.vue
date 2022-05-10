@@ -2,18 +2,16 @@
 import NewCategory from "../components/NewCategory.vue";
 import CategoriesList from "../components/CategoriesList.vue";
 
-import { ref } from "@vue/reactivity";
-
-const categories = ref([]);
 </script>
 
 <template>
   <div>
     categories view
-    <NewCategory @add="(category) => categories.push(category)" />
-    <CategoriesList :list="categories" />
+    <NewCategory  />
+    <CategoriesList  />
   </div>
 </template>
 
-<style>
+<style lang="scss">
+
 </style>

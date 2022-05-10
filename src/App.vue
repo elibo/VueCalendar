@@ -12,7 +12,8 @@ import Categories from "./views/Categories.vue";
   </div>
 </template>
 
-<style>
+<style lang="scss">
+
 .side-panel {
   float: left;
   width: 20%;
