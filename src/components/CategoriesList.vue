@@ -5,11 +5,10 @@ const store = useCategoryStore();
 </script>
 
 <template>
-  <div v-for="cat in store.categories" :key="{ cat }">
-    <p>{{ cat }}</p>
+  <div v-for="(cat, i) in store.categories" :key="{ cat }">
+    <p>{{ cat }}<button @click="store.removeCategory(i)">remove</button></p>
   </div>
 </template>
 
 <style lang="scss">
-
 </style>

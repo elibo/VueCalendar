@@ -5,10 +5,10 @@ import { getMonthCalendar } from "../helpers/CalendarHelper";
 import router from "@/router";
 const store = useCalendarStore();
 
-const viewMonth = (month:number)=>{
-  store.setMonth(month)
-  router.push('/month');
-}
+const viewMonth = (month: number) => {
+  store.setMonth(month);
+  router.push("/month");
+};
 </script>
 
 <template>
@@ -22,12 +22,15 @@ const viewMonth = (month:number)=>{
           </tr>
         </thead>
 
-        <tbody >
+        <tbody>
           <tr v-for="d in getMonthCalendar(i, store.year)" :key="{ d }">
-            <td @click="viewMonth(i)"
+            <td
+              @click="viewMonth(i)"
               v-for="x in d.days"
               :key="{ x }"
-              v-bind:class="{ today: store.today === `${x + ':' + i + ':' + store.year}` }"
+              v-bind:class="{
+                today: store.today === `${x + '-' + i + '-' + store.year}`,
+              }"
             >
               {{ x }}
             </td>
@@ -58,17 +61,17 @@ const viewMonth = (month:number)=>{
     font-size: 16px;
   }
 }
-  td {
-    color: #000000d9;
-    margin: 0 4px;
-    padding: 4px 8px 0;
-    border: 0;
-    border-bottom: 2px solid #f0f0f0;
-    border-radius: 0;
+td {
+  color: #000000d9;
+  margin: 0 4px;
+  padding: 4px 8px 0;
+  border: 0;
+  border-bottom: 2px solid #f0f0f0;
+  border-radius: 0;
 
-    &.today {
-      border-color: #1890ff;
-      background-color: #e6f7ff;
-    }
+  &.today {
+    border-color: #1890ff;
+    background-color: #e6f7ff;
   }
+}
 </style>

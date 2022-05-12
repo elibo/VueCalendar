@@ -1,17 +1,28 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
+
+export interface CategoryState {
+    categories: Array<String>,
+}
 
 export const useCategoryStore = defineStore({
     id: 'category',
-    state: () => ({
-        categories: ['']
-    }),
+    state: () => (
+        {
+            categories: []
+        } as CategoryState),
     getters: {
         getCategories: (state) => state.categories,
 
     },
     actions: {
         addCategory(category: any) {
-            this.categories.push(category)
+            const ind = this.categories.findIndex(c => c.toLowerCase() === category.toLowerCase());
+            if (ind === -1) {
+                this.categories.push(category)
+            }
         },
+        removeCategory(index: number) {
+            this.categories.splice(index, 1);
+        }
     }
 })
